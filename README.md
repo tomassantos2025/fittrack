@@ -1,10 +1,14 @@
 # Final Project - FitTrack
 
+
 Course: Computação Móvel (Mobile Computing)
+
 
 Student(s): Tomás Santos
 
+
 Date: 14/07/2026
+
 
 Repository URL: https://github.com/tomassantos2025/fittrack
 
