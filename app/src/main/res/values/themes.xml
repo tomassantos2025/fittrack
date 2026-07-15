@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <style name="Theme.FitTrack" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent_light</item>
+        <item name="colorOnSecondary">@color/on_primary</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/on_primary</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:textColorPrimary">@color/on_surface</item>
+        <item name="android:textColorSecondary">@color/on_surface_medium</item>
+        <item name="android:textColorHint">@color/on_surface_low</item>
+        <item name="textInputStyle">@style/Widget.FitTrack.TextInputLayout</item>
+        <item name="materialButtonStyle">@style/Widget.FitTrack.Button</item>
+        <item name="materialCardViewStyle">@style/Widget.FitTrack.Card</item>
+        <item name="bottomNavigationStyle">@style/Widget.FitTrack.BottomNavigation</item>
+        <item name="android:windowAnimationStyle">@style/Animation.FitTrack.Activity</item>
+    </style>
+    <style name="Theme.FitTrack.Splash" parent="Theme.FitTrack">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="Widget.FitTrack.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="hintTextColor">@color/primary</item>
+        <item name="android:textColorHint">@color/on_surface_low</item>
+        <item name="boxCornerRadiusTopStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">16dp</item>
+        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusBottomEnd">16dp</item>
+    </style>
+    <style name="Widget.FitTrack.Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">16dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="backgroundTint">@color/primary</item>
+    </style>
+    <style name="Widget.FitTrack.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">12dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="strokeColor">@color/primary</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+    <style name="Widget.FitTrack.Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+    <style name="Widget.FitTrack.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/divider</item>
+    </style>
+    <style name="Widget.FitTrack.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="backgroundTint">@color/surface</item>
+        <item name="itemIconTint">@color/bottom_nav_colors</item>
+        <item name="itemTextColor">@color/bottom_nav_colors</item>
+        <item name="itemRippleColor">@color/ripple</item>
+    </style>
+    <style name="Widget.FitTrack.Chip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/surface_variant</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="android:textColor">@color/on_surface</item>
+        <item name="chipStrokeWidth">0dp</item>
+    </style>
+    <style name="Widget.FitTrack.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabIndicatorColor">@color/primary</item>
+        <item name="tabSelectedTextColor">@color/primary</item>
+        <item name="tabTextColor">@color/on_surface_medium</item>
+        <item name="tabRippleColor">@color/ripple</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabMode">fixed</item>
+    </style>
+    <style name="Widget.FitTrack.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">@color/on_surface</item>
+        <item name="android:background">@color/background</item>
+    </style>
+    <style name="Widget.FitTrack.BottomNavItem" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">58dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:background">@drawable/bg_bottom_nav_item</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="Widget.FitTrack.BottomNavIcon" parent="">
+        <item name="android:layout_width">23dp</item>
+        <item name="android:layout_height">23dp</item>
+        <item name="android:tint">@color/bottom_nav_colors</item>
+    </style>
+    <style name="Widget.FitTrack.BottomNavText" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/bottom_nav_colors</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Widget.FitTrack.StatValue" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="Widget.FitTrack.StatLabel" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/on_surface_medium</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="Animation.FitTrack.Activity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/fade_slide_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/fade_slide_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/fade_slide_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/fade_slide_out</item>
+    </style>
+</resources>

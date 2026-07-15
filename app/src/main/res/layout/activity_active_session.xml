@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fitsSystemWindows="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.FitTrack.Toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/surface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/session_active_title"
+        app:titleTextColor="@color/on_surface" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardTimer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:strokeColor="@color/divider"
+        app:strokeWidth="1dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:orientation="vertical" android:paddingVertical="10dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/session_timer_label" android:textColor="@color/on_surface_medium" android:textSize="12sp" />
+            <Chronometer android:id="@+id/chronometer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/on_surface" android:textSize="30sp" android:textStyle="bold" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btnRestDuration" style="@style/Widget.FitTrack.Button.Text" android:layout_width="wrap_content" android:layout_height="38dp" android:text="@string/rest_duration_60" android:textColor="@color/on_surface_medium" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvConfigureHint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/session_configure_hint"
+        android:textColor="@color/on_surface_medium"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardTimer" />
+
+    <TextView
+        android:id="@+id/tvEmptyState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/session_empty_state"
+        android:textColor="@color/on_surface_medium"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/btnAddQuickExercise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvConfigureHint" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvExercises"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:clipToPadding="false"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/btnAddQuickExercise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvConfigureHint"
+        tools:listitem="@layout/item_session_exercise" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddQuickExercise"
+        style="@style/Widget.FitTrack.Button.Outlined"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/btn_add_quick_exercise"
+        app:cornerRadius="15dp"
+        app:icon="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@id/btnStartWorkout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressAddExercise"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="18dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/btnAddQuickExercise"
+        app:layout_constraintEnd_toEndOf="@id/btnAddQuickExercise"
+        app:layout_constraintTop_toTopOf="@id/btnAddQuickExercise" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStartWorkout"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/btn_start_workout"
+        android:textSize="16sp"
+        app:backgroundTint="@color/primary"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Focused workout stage: the configuration list disappears after the countdown. -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFocusedWorkout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="22dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btnFinishWorkout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardTimer"
+        app:strokeColor="@color/divider"
+        app:strokeWidth="1dp">
+        <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_horizontal" android:orientation="vertical" android:padding="20dp">
+                <TextView android:id="@+id/tvActiveExercisePosition" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/primary" android:textSize="12sp" android:textStyle="bold" />
+                <ImageView android:id="@+id/ivActiveExerciseAnim" android:layout_width="156dp" android:layout_height="156dp" android:layout_marginTop="14dp" android:background="@drawable/bg_exercise_image" android:contentDescription="@string/exercise_animation_description" android:padding="8dp" android:scaleType="centerCrop" />
+                <TextView android:id="@+id/tvActiveExerciseName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:gravity="center" android:textColor="@color/on_surface" android:textSize="24sp" android:textStyle="bold" />
+                <TextView android:id="@+id/tvActiveSetProgress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:textColor="@color/on_surface_medium" android:textSize="14sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:text="@string/session_current_set_time" android:textColor="@color/on_surface_medium" android:textSize="12sp" />
+                <Chronometer android:id="@+id/chronometerSet" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/accent" android:textSize="40sp" android:textStyle="bold" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:orientation="horizontal">
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/activeWeightLayout" style="@style/Widget.FitTrack.TextInputLayout" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:layout_weight="1" android:hint="@string/weight_label">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etActiveWeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" android:selectAllOnFocus="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/activeRepsLayout" style="@style/Widget.FitTrack.TextInputLayout" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:layout_weight="1" android:hint="@string/reps_label">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etActiveReps" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:selectAllOnFocus="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+                <com.google.android.material.button.MaterialButton android:id="@+id/btnCompleteSet" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="18dp" android:text="@string/session_complete_set" app:backgroundTint="@color/success" app:cornerRadius="16dp" />
+            </LinearLayout>
+        </ScrollView>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardRestTimer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/surface_variant"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardTimer"
+        app:strokeColor="@color/divider"
+        app:strokeWidth="1dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:orientation="vertical" android:padding="16dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rest_timer_label" android:textColor="@color/on_surface" android:textSize="14sp" android:textStyle="bold" />
+            <TextView android:id="@+id/tvRestTimer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="01:00" android:textColor="@color/accent" android:textSize="34sp" android:textStyle="bold" />
+            <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/progressRest" android:layout_width="match_parent" android:layout_height="6dp" android:layout_marginTop="10dp" android:max="100" app:indicatorColor="@color/accent" app:trackColor="@color/divider" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/btnSkipRest" style="@style/Widget.FitTrack.Button.Text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="@string/session_skip_rest" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFinishWorkout"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/btn_finish_session"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:backgroundTint="@color/accent"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar android:id="@+id/progressBar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/countdownOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#E6172033"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical" android:padding="24dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/workout_starting_in" android:textColor="@android:color/white" android:textSize="22sp" android:textStyle="bold" />
+            <TextView android:id="@+id/tvCountdown" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="3" android:textColor="@color/accent_light" android:textSize="94sp" android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

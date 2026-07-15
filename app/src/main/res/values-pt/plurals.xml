@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <plurals name="exercise_count">
+        <item quantity="one">%d exercício disponível</item>
+        <item quantity="other">%d exercícios disponíveis</item>
+    </plurals>
+</resources>

@@ -1,0 +1,26 @@
+package com.example.fittrack.utils
+
+import android.content.Context
+import com.example.fittrack.model.Exercise
+import java.util.Locale
+
+/**
+ * Utilitário de UI para exercícios. Agrupa lógica de apresentação comum para evitar repetição nos ecrãs.
+ *
+ * Comentário de manutenção: esta classe deve manter a lógica separada por responsabilidade,
+ * para ser mais fácil alterar a app sem quebrar outros ecrãs.
+ */
+object ExerciseUiHelper {
+    private val pt = mapOf("bench_press" to "Supino com barra","incline_dumbbell_press" to "Supino inclinado com halteres","push_up" to "Flexões","dumbbell_fly" to "Aberturas com halteres","squat" to "Agachamento com barra","leg_press" to "Prensa de pernas","romanian_deadlift" to "Peso morto romeno","deadlift" to "Peso morto","walking_lunge" to "Passadas","leg_curl" to "Flexão de pernas","calf_raise" to "Elevação de gémeos","pull_up" to "Elevações na barra","lat_pulldown" to "Puxada dorsal","barbell_row" to "Remada com barra","seated_cable_row" to "Remada sentada","overhead_press" to "Press militar","lateral_raise" to "Elevação lateral","face_pull" to "Face pull","bicep_curl" to "Curl de bíceps","hammer_curl" to "Curl martelo","tricep_pushdown" to "Extensão de tríceps na polia","tricep_extension" to "Extensão de tríceps acima da cabeça","plank" to "Prancha","hanging_leg_raise" to "Elevação de pernas suspenso","mountain_climber" to "Escalador","burpee" to "Burpee","goblet_squat" to "Agachamento goblet","hip_thrust" to "Elevação de anca","pec_deck" to "Peck deck")
+    private val es = mapOf("bench_press" to "Press de banca","incline_dumbbell_press" to "Press inclinado con mancuernas","push_up" to "Flexiones","dumbbell_fly" to "Aperturas con mancuernas","squat" to "Sentadilla con barra","leg_press" to "Prensa de piernas","romanian_deadlift" to "Peso muerto rumano","deadlift" to "Peso muerto","walking_lunge" to "Zancadas","leg_curl" to "Curl femoral","calf_raise" to "Elevación de gemelos","pull_up" to "Dominadas","lat_pulldown" to "Jalón dorsal","barbell_row" to "Remo con barra","seated_cable_row" to "Remo sentado","overhead_press" to "Press militar","lateral_raise" to "Elevación lateral","face_pull" to "Face pull","bicep_curl" to "Curl de bíceps","hammer_curl" to "Curl martillo","tricep_pushdown" to "Extensión de tríceps en polea","tricep_extension" to "Extensión de tríceps sobre la cabeza","plank" to "Plancha","hanging_leg_raise" to "Elevación de piernas colgado","mountain_climber" to "Escalador","burpee" to "Burpee","goblet_squat" to "Sentadilla goblet","hip_thrust" to "Elevación de cadera","pec_deck" to "Peck deck")
+    fun name(context: Context, exercise: Exercise): String = when(LocaleHelper.getLanguage(context)){"pt"->pt[exercise.id];"es"->es[exercise.id];else->null} ?: exercise.name
+    fun muscle(context: Context, value:String):String { val key=value.lowercase(); return when(LocaleHelper.getLanguage(context)){"pt"->mapOf("chest" to "Peito","triceps" to "Tríceps","shoulders" to "Ombros","quadriceps" to "Quadríceps","glutes" to "Glúteos","hamstrings" to "Posteriores da coxa","core" to "Core","back" to "Costas","biceps" to "Bíceps","calves" to "Gémeos")[key];"es"->mapOf("chest" to "Pecho","triceps" to "Tríceps","shoulders" to "Hombros","quadriceps" to "Cuádriceps","glutes" to "Glúteos","hamstrings" to "Isquiotibiales","core" to "Core","back" to "Espalda","biceps" to "Bíceps","calves" to "Gemelos")[key];else->null} ?: value }
+    fun equipment(context:Context,v:String):String = when(LocaleHelper.getLanguage(context)){"pt"->v.replace("Barbell","Barra").replace("Dumbbell","Halteres").replace("Machine","Máquina").replace("Bodyweight","Peso corporal").replace("Cable","Polia");"es"->v.replace("Barbell","Barra").replace("Dumbbell","Mancuernas").replace("Machine","Máquina").replace("Bodyweight","Peso corporal").replace("Cable","Polea");else->v}
+    fun difficulty(context:Context,v:String)=when(LocaleHelper.getLanguage(context)){"pt"->mapOf("beginner" to "Iniciante","intermediate" to "Intermédio","advanced" to "Avançado")[v.lowercase()];"es"->mapOf("beginner" to "Principiante","intermediate" to "Intermedio","advanced" to "Avanzado")[v.lowercase()];else->null} ?: v.replaceFirstChar{it.uppercase()}
+    fun description(context: Context, exercise: Exercise): String = if (LocaleHelper.getLanguage(context) == "en") exercise.description else context.getString(com.example.fittrack.R.string.exercise_default_description)
+    fun howTo(context: Context, exercise: Exercise): List<String> = if (LocaleHelper.getLanguage(context) == "en") exercise.howTo else listOf(context.getString(com.example.fittrack.R.string.exercise_detail_no_steps))
+    fun tips(context: Context, exercise: Exercise): List<String> = if (LocaleHelper.getLanguage(context) == "en") exercise.tips else listOf(context.getString(com.example.fittrack.R.string.exercise_detail_default_tip))
+    fun mistakes(context: Context, exercise: Exercise): List<String> = if (LocaleHelper.getLanguage(context) == "en") exercise.commonMistakes else listOf(context.getString(com.example.fittrack.R.string.exercise_detail_default_mistake))
+    fun iconFor(exercise: Exercise): String = exercise.iconEmoji.ifBlank { "🏋️" }
+    fun youtubeSearchQuery(exercise: Exercise): String = "${exercise.name} proper form gym exercise tutorial"
+}

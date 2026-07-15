@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_graph" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/nav_surface"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/nav_border"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingStart="6dp"
+            android:paddingTop="7dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="7dp">
+
+            <LinearLayout android:id="@+id/navDashboard" style="@style/Widget.FitTrack.BottomNavItem">
+                <ImageView android:id="@+id/iconDashboard" style="@style/Widget.FitTrack.BottomNavIcon" android:src="@drawable/ic_home" />
+                <TextView android:id="@+id/textDashboard" style="@style/Widget.FitTrack.BottomNavText" android:text="@string/nav_dashboard" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/navPlans" style="@style/Widget.FitTrack.BottomNavItem">
+                <ImageView android:id="@+id/iconPlans" style="@style/Widget.FitTrack.BottomNavIcon" android:src="@drawable/ic_plans" />
+                <TextView android:id="@+id/textPlans" style="@style/Widget.FitTrack.BottomNavText" android:text="@string/nav_plans" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/navExercises" style="@style/Widget.FitTrack.BottomNavItem">
+                <ImageView android:id="@+id/iconExercises" style="@style/Widget.FitTrack.BottomNavIcon" android:src="@drawable/ic_exercises" />
+                <TextView android:id="@+id/textExercises" style="@style/Widget.FitTrack.BottomNavText" android:text="@string/nav_exercises" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/navSocialContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:id="@+id/navSocial"
+                    style="@style/Widget.FitTrack.BottomNavItem"
+                    android:layout_width="match_parent">
+                    <ImageView android:id="@+id/iconSocial" style="@style/Widget.FitTrack.BottomNavIcon" android:src="@drawable/ic_social" />
+                    <TextView android:id="@+id/textSocial" style="@style/Widget.FitTrack.BottomNavText" android:text="@string/nav_social" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/socialBadge"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bg_social_badge"
+                    android:elevation="0dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <LinearLayout android:id="@+id/navProfile" style="@style/Widget.FitTrack.BottomNavItem">
+                <ImageView android:id="@+id/iconProfile" style="@style/Widget.FitTrack.BottomNavIcon" android:src="@drawable/ic_profile" />
+                <TextView android:id="@+id/textProfile" style="@style/Widget.FitTrack.BottomNavText" android:text="@string/nav_profile" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
